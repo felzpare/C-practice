@@ -1,0 +1,135 @@
+/*****
+Author: Felicia Paredez
+Date: 3/19/2019
+A new author is in the process of negotiating a contract for a new romance novel.
+The publisher is offering three options. In the first option, the author is paid $5,000
+upon delivery of the final manuscript and $20,000 when the novel is published. In the
+second option, the author is paid 12.5% of the net price of the novel for each copy 
+of the novel sold. In the third option, the author is paid 10% of the net price 
+for the first 4000 copies sold, and 14% of the net price for the copies sold over 4000.
+The author has some idea about the number of copies that will be sold and would like to 
+to have an estimate of the royalties generated under each option. Write a program
+that promps the author to enter the net price of each copy of the novel and the estimated
+number of copies that will be sold. The program then outputs the royalties under each
+option and the best option the author could choose.
+*****/
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+	
+//declare all variables
+double copies, netprice, first, second, third;
+const double rate1 = 25000,
+			 rate2= 0.125,
+			 rate3_1= 0.10,
+			 rate3_2=0.14;
+
+
+
+//prompt user for netprice and copies and validate input
+cout << "Enter the number of copies sold" << endl;
+cin >> copies;
+if (copies < 0)
+{
+	cout << "That is not a valid entry";
+	return 0;	
+}
+
+
+cout << "Enter the net price for each copy" << endl;
+cin >> netprice;
+if (netprice < 0)
+{	
+	cout << "That is not a valid entry";
+	return 0;
+}
+
+
+
+
+
+
+
+//Process for determining royalties under each option and format
+cout << fixed << setprecision(2);
+first=rate1;
+cout << "Royalties under the first option would total $" << first << endl;
+
+
+second= (netprice *copies) * rate2;
+cout << "Royalties under the second option would total $" << second << endl;
+
+
+if (copies >4000)
+{
+	third= ((4000* netprice) * rate3_1) + (((copies -4000) * netprice ) * rate3_2);	
+}
+else
+{
+	third = ((copies *netprice) * rate3_1);
+}
+cout << "Royalties under the third option would total $" << third << endl;
+
+
+
+
+
+
+//Optional if any results should equal
+if (first==second |third ==first|second==third)
+{
+	if (first = second)
+	{
+		cout << "The royalties in the first and second option are equal in value";
+	}
+	if (third =first)
+	{
+		cout << "The royalties in the first and third option are equal in value";
+	}
+	if (second = third)
+	{
+		cout << "The royalties in the second and third option are equal in value";
+	}
+}
+
+
+
+
+
+//For determining the best option and displaying output
+if (second > first && third >first)
+{
+	if (second >third)
+	{
+		cout << "The second option is the best.";
+	}
+	else
+	{
+		cout << "The third option is the best.";
+	}
+}
+else
+{
+	cout << "The first option is the best.";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+return 0;
+	
+}
