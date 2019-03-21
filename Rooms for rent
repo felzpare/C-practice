@@ -1,0 +1,111 @@
+/*****
+Author: Felicia Paredez
+*
+Date: 3/20/2019
+*
+The cost of renting a room at a hotel is, say $100 per night.
+For special occassions, such as a wedding or conference, the hotel offers a special
+discount as follows: If the number of rooms booked is at least 10, the discount is 10%;
+at least 20, the discount is 20%; and at least 30, the discount is 30%. Also if the rooms are booked for at least 3 days then
+there is an additional 5% discount. Write a program tht prompts the user to enter the cost of renting one room,
+the number of rooms booked, the number of days the rooms are booked, and the sales tax(as a percent). The program
+outputs the cost of renting one room, the discount on each room as a percent, the number of rooms booked, the
+number of days the rooms are booked, the total cost of the rooms, the sales tax, and the total biling amount.
+Your program must use appropriate named constants to store special values such as verious discounts.
+*****/
+
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
+ 
+int main()
+{
+	//Declare all variables
+	double roomcost, roomnum, daysbooked, totalcost1, totalcost, totaldiscount, dis, dis1, amountdue, salestax;
+	
+	
+	
+	//Get input from user
+	cout << "Enter the cost of renting an individual room\n";
+	cin >> roomcost;
+	
+	cout << "Enter the number of rooms booked\n";
+	cin >> roomnum;
+
+	
+	cout << "Enter the number of days the rooms are booked\n";
+	cin >> daysbooked;
+
+	
+	cout << "Enter the sales tax (as a percentage ommiting %)\n";
+	cin >> salestax;
+
+	
+	//To validate the input
+	if (roomcost<0 | roomnum<0 | daysbooked<0 |salestax<0)
+	{
+		cout << "Error, negative values are not allowed";
+		return 0;
+	}
+	
+	
+	
+	
+	
+
+	//To find total cost without discounts
+	totalcost=((roomcost * roomnum) * daysbooked);
+
+
+
+	//To determine if any discounts can be applied
+	if (roomnum >=30)
+		dis=0.30;	
+	else if (roomnum >=20)
+		dis=0.20;	
+	else if (roomnum >=10)
+		dis=0.10;	
+	else
+		dis=0;
+
+	
+	if (daysbooked >=3)
+		dis1=0.05;
+	else
+		dis1=0;
+
+
+
+
+	//To find total cost with the discounts
+	totaldiscount=(dis*totalcost) + (dis1 *totalcost);
+	totalcost1= totalcost-totaldiscount;
+	
+	
+	//To find total amount including tax
+	amountdue= totalcost1 - (totalcost1 * (salestax/100));
+	
+	
+	
+	//For displaying output & format
+	cout << fixed << setprecision(2);
+	cout << "-------------------------------" << endl;
+	cout << "The cost of renting one room is $" << roomcost << endl;
+	cout << "The applied discounts for the room total: " << (dis+dis1)*100 << "%" << endl;
+	cout << "The number of rooms booked: " << roomnum << endl;
+	cout << "The number of days the rooms are booked: " << daysbooked << endl;
+	cout << "The total cost of the rooms is $" << totalcost1 << endl;
+	cout << "The total amount of sales tax is " << salestax << "%" << endl;
+	cout << "The total amount due is $" << amountdue << endl;
+
+
+
+
+
+
+
+
+
+	return 0;	
+}
