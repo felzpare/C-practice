@@ -78,23 +78,25 @@ int main()
 
 
 
-	//To find total cost with the discounts
+	//To find total cost with the discounts applied
 	totaldiscount=(dis*totalcost) + (dis1 *totalcost);
 	totalcost1= totalcost-totaldiscount;
 	
 	
 	//To find total amount including tax
-	amountdue= totalcost1 - (totalcost1 * (salestax/100));
+	amountdue= totalcost1 + (totalcost1 * (salestax/100));
 	
 	
 	
 	//For displaying output & format
-	cout << fixed << setprecision(2);
+	
 	cout << "-------------------------------" << endl;
 	cout << "The cost of renting one room is $" << roomcost << endl;
 	cout << "The applied discounts for the room total: " << (dis+dis1)*100 << "%" << endl;
 	cout << "The number of rooms booked: " << roomnum << endl;
 	cout << "The number of days the rooms are booked: " << daysbooked << endl;
+	
+	cout << fixed << setprecision(2);
 	cout << "The total cost of the rooms is $" << totalcost1 << endl;
 	cout << "The total amount of sales tax is " << salestax << "%" << endl;
 	cout << "The total amount due is $" << amountdue << endl;
