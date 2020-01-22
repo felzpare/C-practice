@@ -79,7 +79,7 @@ int main()
 
 
 	//To find total cost with the discounts applied
-	totaldiscount=(dis*totalcost) + (dis1 *totalcost);
+	totaldiscount=((dis + dis1) * totalcost);
 	totalcost1= totalcost-totaldiscount;
 	
 	
